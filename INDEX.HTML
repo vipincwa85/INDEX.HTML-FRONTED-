@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align:center;font-family:sans-serif">
+
+<h2>AI Video Generator</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+<button onclick="login()">Login</button>
+
+<div id="app" style="display:none;">
+<br>
+<textarea id="story" placeholder="Enter story" style="width:80%;height:100px;"></textarea>
+<br><br>
+<button onclick="gen()">Generate Video</button>
+<p id="status"></p>
+</div>
+
+<script>
+function login(){
+  if(user.value==="taneeshvpsvideo" && pass.value==="taneeshvpsvideo"){
+    app.style.display="block";
+  } else if(pass.value==="TMISHRAWEBSTORYAI"){
+    app.style.display="block";
+    alert("Admin login");
+  } else alert("Wrong");
+}
+
+async function gen(){
+  status.innerText="Creating...";
+  let res=await fetch("YOUR_BACKEND_URL/video",{method:"POST"});
+  let blob=await res.blob();
+  let a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="video.mp4";
+  a.click();
+  status.innerText="Done";
+}
+</script>
+
+</body>
+</html>
