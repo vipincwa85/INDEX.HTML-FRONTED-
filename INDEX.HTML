@@ -28,7 +28,7 @@ function login(){
 
 async function gen(){
   status.innerText="Creating...";
-  let res=await fetch("YOUR_BACKEND_URL/video",{method:"POST"});
+  let res=await fetch("YOUR_https://index-html-backender.up.railway.app_URL/video",{method:"POST"});
   let blob=await res.blob();
   let a=document.createElement("a");
   a.href=URL.createObjectURL(blob);
